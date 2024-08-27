@@ -1,0 +1,11 @@
+/* Asegúrate de que tu archivo CSS esté importado en tu proyecto */
+.min-vh-100 {
+    min-height: 100vh;
+  }
+  
+  .card {
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+  }
+  
