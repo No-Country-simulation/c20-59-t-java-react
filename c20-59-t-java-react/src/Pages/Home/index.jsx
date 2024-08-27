@@ -1,12 +1,11 @@
-import Agendar from '../../componentes/Agendar/index'
+import Agendar from '../../componentes/Agendar/index';
 
-
-const home = () => {
-    return(
+const Home = () => {
+    return (
         <section className="Home-container">
             <Agendar />
         </section>
-    )
+    );
 }
 
-export default home
+export default Home;
