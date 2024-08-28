@@ -15,9 +15,9 @@
 /* Estilo para centrar el contenido y ocupar toda la pantalla */
 .text-center {
   width: 100%;
-  max-width: none; /* Remueve la restricción del ancho */
+  max-width: none; 
   height: 100%;
-  max-height: none; /* Remueve la restricción de la altura */
+  max-height: none; 
   display: flex;
   flex-direction: column;
   justify-content: center;
