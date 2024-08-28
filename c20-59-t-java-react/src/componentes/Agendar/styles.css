@@ -2,7 +2,7 @@
 .btn-custom {
   background-color: white;
   color: black;
-  border: 1px solid #ccc; 
+  border: 1px solid #ccc;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 100%; 
 }
@@ -12,14 +12,14 @@
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Estilo para la tarjeta */
-.card {
-  width: 100%; 
+/* Estilo para centrar el contenido y ocupar toda la pantalla */
+.text-center {
+  width: 100%;
+  max-width: none; /* Remueve la restricción del ancho */
   height: 100%;
-  max-width: 500px;
-  margin: auto; 
-  display: flex; 
-  flex-direction: column; 
+  max-height: none; /* Remueve la restricción de la altura */
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -53,7 +53,7 @@ h2.horario-atencion {
 
 /* Media queries para responsividad */
 @media (max-width: 576px) {
-  .card {
+  .text-center {
     padding: 2rem;
   }
 
@@ -63,7 +63,7 @@ h2.horario-atencion {
 }
 
 @media (min-width: 1280px) {
-  .card {
+  .text-center {
     padding: 4rem;
   }
 
