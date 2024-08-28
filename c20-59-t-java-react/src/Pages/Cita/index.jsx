@@ -4,42 +4,52 @@ import './styles.css';
 
 const Cita = () => {
   return (
-    <Container fluid className="d-flex justify-content-center align-items-center min-vh-100">
-      <Row className="w-100 justify-content-center">
-        <Col xs={12} md={6} lg={4} className="p-4">
-          <h2 className="text-center">Detalles de Cita</h2>
-          <Form>
-            <Form.Group controlId="formTime">
-              <Form.Label>Hora</Form.Label>
-              <Form.Control type="time" />
-            </Form.Group>
-            <Form.Group controlId="formDate">
-              <Form.Label>Fecha</Form.Label>
-              <Form.Control type="date" />
-            </Form.Group>
-            <Form.Group controlId="formSymptoms">
-              <Form.Label>Síntomas</Form.Label>
-              <div className="d-flex">
-                <Form.Control type="text" placeholder="Añadir Síntoma" />
-                <Button variant="primary">Añadir</Button>
+    <div className="full-screen-container">
+      <Container fluid className="d-flex justify-content-center align-items-center">
+        <Row className="w-100 justify-content-center">
+          <Col xs={12} md={8} lg={6} className="p-4">
+            <h2 className="text-center $blue-800">Detalles de Cita</h2>
+            <Form>
+              <Form.Group controlId="formTime">
+                <Form.Label>Hora</Form.Label>
+                <Form.Control type="time" />
+              </Form.Group>
+              <Form.Group controlId="formDate">
+                <Form.Label>Fecha</Form.Label>
+                <Form.Control type="date" />
+              </Form.Group>
+              <Form.Group controlId="formSymptoms">
+                <Form.Label>Síntomas</Form.Label>
+                <div className="d-flex">
+                  <Form.Control type="text" placeholder="Añadir Síntoma" />
+                  <Button variant="primary" className="btn-add">Añadir</Button>
+                </div>
+                <div className="mt-2">
+                  {/* Aquí irán los síntomas */}
+                </div>
+              </Form.Group>
+              <Form.Group controlId="formDoctor">
+                <Form.Label>Doctor</Form.Label>
+                <Form.Control as="select">
+                  <option>Seleccionar Doctor</option>
+                  <option>Doctor 1</option>
+                  <option>Doctor 2</option>
+                  <option>Doctor 3</option>
+                </Form.Control>
+              </Form.Group>
+              <div className="d-flex justify-content-between mt-4">
+                <Button variant="primary" className="btn-cancel">
+                  Cancelación
+                </Button>
+                <Button variant="primary" className="btn-confirm">
+                  Confirmar Cita
+                </Button>
               </div>
-              <div className="mt-2">
-                {/* Aquí irán los síntomas */}
-              </div>
-            </Form.Group>
-            <Form.Group controlId="formDoctor">
-              <Form.Label>Doctor</Form.Label>
-              <Form.Control as="select">
-                <option>Seleccionar Doctor</option>
-                <option>Doctor 1</option>
-                <option>Doctor 2</option>
-                <option>Doctor 3</option>
-              </Form.Control>
-            </Form.Group>
-          </Form>
-        </Col>
-      </Row>
-    </Container>
+            </Form>
+          </Col>
+        </Row>
+      </Container>
+    </div>
   );
 };
 

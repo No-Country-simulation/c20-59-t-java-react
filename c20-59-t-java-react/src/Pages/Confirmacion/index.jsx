@@ -1,12 +1,12 @@
 import { Button, Container, Row } from 'react-bootstrap';
-import { FaHeart, FaBell, FaCalendarAlt, FaArchive, FaArrowUp } from 'react-icons/fa';
+import { FaRegHeart, FaBell, FaCalendarAlt, FaArchive, FaArrowUp } from 'react-icons/fa';
 import './styles.css';  
 
 const Confirmacion = () => {
   return (
     <Container fluid className="d-flex justify-content-center align-items-center vh-100">
       <div className="text-center p-4 confirmacion-container">
-        <FaHeart size={50} className="confirmacion-icon" />
+        <FaRegHeart size={50} className="confirmacion-icon" />
         <h1>Cita agendada con éxito</h1>
         <Row className="confirmacion-row">
           <Button variant="light" className="confirmacion-button">

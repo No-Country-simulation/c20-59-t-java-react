@@ -1,51 +1,62 @@
 /* Estilos personalizados para el botón */
 .btn-custom {
-  background-color: white;
-  color: black;
-  border: 1px solid #ccc;
+  background-color: #5f84a2; /* Color de fondo del botón */
+  color: white; /* Color del texto */
+  border: 1px solid #5f84a2; /* Borde del mismo color que el fondo */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 100%; 
 }
 
 .btn-custom:hover {
-  background-color: #f8f9fa;
+  background-color: white; /* Color de fondo al hacer hover */
+  color: #5f84a2; /* Color del texto al hacer hover */
+  border: 1px solid #5f84a2; /* Borde del mismo color que el fondo */
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Estilo para centrar el contenido y ocupar toda la pantalla */
-.text-center {
-  width: 100%;
-  max-width: none; 
-  height: 100%;
-  max-height: none; 
+/* Estilo para el contenedor completo */
+.full-screen-container {
+  width: 100vw; /* Ocupa todo el ancho de la vista */
+  height: 100vh; /* Ocupa toda la altura de la vista */
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  overflow: hidden; /* Evita el desbordamiento */
+}
+
+/* Estilo para centrar el contenido dentro del contenedor */
+.agendar-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: center; /* Centra verticalmente */
+  align-items: center; /* Centra horizontalmente */
+  width: auto; /* Ajusta el ancho automáticamente */
+  height: auto; /* Ajusta la altura automáticamente */
+  padding: 20px; /* Espacio interno para el contenido */
 }
 
 /* Estilo para la imagen del logo */
 .logo-img {
-  max-width: 200px; 
+  max-width: 200px;
   width: 100%;
-  height: auto; 
+  height: auto;
 }
 
 span.salud-vital {
   display: block;
   color: #1a4568;
   text-align: center;
-  margin-top: 10px; 
-  font-size: 2rem; 
+  margin-top: 10px;
+  font-size: 2rem;
 }
 
 h2.horario-atencion {
-  font-size: 1.25rem; 
+  font-size: 1.25rem;
 }
 
 /* Ajuste para vh-100 en móviles */
 @media (max-height: 600px) {
-  .vh-100 {
+  .full-screen-container {
     height: auto;
     min-height: 100vh;
   }
@@ -53,21 +64,21 @@ h2.horario-atencion {
 
 /* Media queries para responsividad */
 @media (max-width: 576px) {
-  .text-center {
+  .agendar-container {
     padding: 2rem;
   }
 
   .logo-img {
-    max-width: 150px; 
+    max-width: 150px;
   }
 }
 
 @media (min-width: 1280px) {
-  .text-center {
+  .agendar-container {
     padding: 4rem;
   }
 
   .logo-img {
-    max-width: 200px; 
+    max-width: 200px;
   }
 }
