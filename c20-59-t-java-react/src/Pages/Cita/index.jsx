@@ -4,7 +4,7 @@ import './styles.css';
 
 const Cita = () => {
   return (
-    <Container fluid className="d-flex justify-content-center align-items-center min-vh-100">
+    <Container fluid className="d-flex justify-content-center align-items-center max-vh-100">
       <Row className="w-100">
         <Col>
           <Card className="p-4">
