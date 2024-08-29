@@ -1,11 +1,14 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { NavLink } from 'react-router-dom';
 import logo from '../../assets/img/Corazón.png';
+import BottomNavbar from '../../Pages/shared/BottomNavbar/BottomNavbar';
 import './styles.css';
 
 const Agendar = () => {
   return (
-    <div className="full-screen-container d-flex justify-content-center align-items-center">
-      <div className="agendar-container text-center p-4">
+    
+    <div className="full-screen-container d-flex flex-column">
+      <div className="agendar-container text-center">
         {/* Solo imagen del logo */}
         <img className="img-fluid mb-3 logo-img" src={logo} alt="Logo de Salud Vital" />
         <span className="salud-vital">Salud Vital</span>
@@ -13,10 +16,11 @@ const Agendar = () => {
         <p>Lunes a Viernes: 7:00 am - 7:00 pm</p>
         <p>Sábados: 7:00 am - 1:00 pm</p>
         {/* Botón de agendar cita */}
-        <button className="btn btn-custom mt-4">Agendar Cita</button>
+        <NavLink to='/cita' className="btn btn-custom mt-4 mb-5">Agendar Cita</NavLink>
         {/* Espacio para el navbar */}
-        <div className="mt-5"></div>
       </div>
+          <BottomNavbar/>
+        
     </div>
   );
 };
