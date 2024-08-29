@@ -18,10 +18,10 @@
 .full-screen-container {
   width: 100vw; /* Ocupa todo el ancho de la vista */
   height: 100vh; /* Ocupa toda la altura de la vista */
-  display: flex;
   justify-content: center; /* Centra horizontalmente */
   align-items: center; /* Centra verticalmente */
   overflow: hidden; /* Evita el desbordamiento */
+  
 }
 
 /* Estilo para centrar el contenido dentro del contenedor */
@@ -30,9 +30,10 @@
   flex-direction: column;
   justify-content: center; /* Centra verticalmente */
   align-items: center; /* Centra horizontalmente */
-  width: auto; /* Ajusta el ancho automáticamente */
-  height: auto; /* Ajusta la altura automáticamente */
-  padding: 20px; /* Espacio interno para el contenido */
+  width: 100vw; /* Ajusta el ancho automáticamente */
+  height: 100vh; /* Ajusta la altura automáticamente */
+  padding: 0px; /* Espacio interno para el contenido */
+  
 }
 
 /* Estilo para la imagen del logo */
