@@ -1,6 +1,6 @@
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './styles.css';
+import './CitaStyles.css';
 import { NavLink } from 'react-router-dom';
 import BottomNavbar from '../shared/BottomNavbar/BottomNavbar';
 
@@ -13,9 +13,9 @@ const Cita = () => {
             <h2 className="text-center $blue-800">Detalles de Cita</h2>
             <Form className='mb-5'>
               <Form.Group controlId="formSymptoms">
-                <Form.Label>Síntomas</Form.Label>
+                <Form.Label>Especialidad</Form.Label>
                 <div className="d-flex">
-                  <Form.Control type="text" placeholder="Añadir Síntoma" />
+                  <Form.Control type="text" placeholder="Añadir Especialidad" />
                   <Button variant="primary" className="btn-add">Añadir</Button>
                 </div>
                 <div className="mt-2">

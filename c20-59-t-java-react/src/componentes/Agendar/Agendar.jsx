@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import logo from '../../assets/img/Corazón.png';
 import BottomNavbar from '../../Pages/shared/BottomNavbar/BottomNavbar';
 import Header from '../../Pages/shared/header/Header';
-import './styles.css';
+import './AgendarStyles.css';
 import homeImg from '../../assets/img/Illustration.png'
 import addDate from '../../assets/icons/AddDate.png'
 import HomeBtnLines from '../../assets/icons/HomeBtnLines.png'
