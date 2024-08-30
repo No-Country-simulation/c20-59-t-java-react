@@ -1,4 +1,30 @@
-/* Estilos personalizados para el botón */
+.noDatesText1{
+  color: var(--main-color-purple);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-headline-2);
+  letter-spacing: var(--letter-spacing);
+}
+.noDatesText2{
+  color: var(--main-color-light-purple);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-body-1);
+  letter-spacing: var(--letter-spacing);
+}
+
+
+
+.HomeBtnLines{
+  margin-left: 120px;
+  margin-top: -10px;
+  height: 140px;
+}
+.HomeBtnPosition{
+  margin-top: -90px;
+  margin-right: -189px;
+  width: 60px;
+}
+
+
 .btn-custom {
   background-color: #5f84a2; /* Color de fondo del botón */
   color: white; /* Color del texto */
@@ -55,6 +81,7 @@ h2.horario-atencion {
   font-size: 1.25rem;
 }
 
+
 /* Ajuste para vh-100 en móviles */
 @media (max-height: 600px) {
   .full-screen-container {
@@ -65,9 +92,7 @@ h2.horario-atencion {
 
 /* Media queries para responsividad */
 @media (max-width: 576px) {
-  .agendar-container {
-    padding: 2rem;
-  }
+  
 
   .logo-img {
     max-width: 150px;
