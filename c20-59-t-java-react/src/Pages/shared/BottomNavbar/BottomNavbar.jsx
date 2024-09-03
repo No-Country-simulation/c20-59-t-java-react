@@ -6,21 +6,22 @@ import Setting from "../../../assets/icons/Setting.png"
 import Notifications from "../../../assets/icons/Vector-campana.png"
 import MedicHistory from "../../../assets/icons/Vector-4.png"
 import '../BottomNavbar/BottomNavbarStyles.css'
+import { FaChartBar, FaClipboardCheck, FaCommentDots, FaHouseUser } from 'react-icons/fa'
 
 const BottomNavbar = () => {
   return (
         <Nav className='d-flex justify-content-evenly sombra-navbar vw-100'>
             <Nav.Link href='home'>
-                <img className='navIcon' src={Home} alt="Home button" />
+               <FaHouseUser size={30} className="home-icon"/>
             </Nav.Link>
             <Nav.Link href='history'>
-                <img className='navIcon' src={MedicHistory} alt="Medical history button" />
+                <FaChartBar size={30} className="home-icon"/>
             </Nav.Link>
             <Nav.Link href='notifications'>
-                <img className='navIcon' src={Notifications} alt="Home button" />
+                <FaClipboardCheck size={30} className="home-icon"/>
             </Nav.Link>
             <Nav.Link href='settings'>
-                <img className='navIcon' src={Setting} alt="Settings button" />
+                <FaCommentDots size={30} className="home-icon"/>
             </Nav.Link>
         </Nav>  
   )

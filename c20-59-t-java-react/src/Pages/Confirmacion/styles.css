@@ -4,7 +4,7 @@
   }
   
   .confirmacion-icon {
-    color: #003366;
+    color: #ccb2ff;
   }
   
   .confirmacion-row {
@@ -16,7 +16,7 @@
   }
   
   .confirmacion-button {
-    color: #003366;
+    color: var(--main-color-blue);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Aumenta la sombra */
     margin-bottom: 0.5rem;
   }
@@ -25,6 +25,10 @@
     color: white;
   }
   
-  h1{
-    color: #5F84A2;
+  .successText{
+    color: var(--main-color-blue);
+    font-weight: var(--font-weight-bold);
+    font-size: 2rem
+
   }
+  
