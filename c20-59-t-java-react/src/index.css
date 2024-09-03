@@ -1,30 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
-
 :root {
-  /* colors */
-  --main-color-blue: #1A4568;
-  --main-color-purple: #432C81;
-  --main-color-light-purple: #A095C1;
-  --main-color-gray: #2F2F30;
-  --main-color-light-gray: #EDECF4;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
 
-  /* font */
-  --font-family-sans-serif: "Raleway";
-  --font-weight-regular:400;
-  --font-weight-medium:500;
-  --font-weight-bold: 700;
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
 
-  /* font size */
-  --font-size-headline-1: 1.7rem;  
-  --font-size-headline-2: 1.4rem;  
-  --font-size-body-1: 1rem;
-
-  /* spacing */
-  --letter-spacing: -0.5px;
-}
-
-html, body{
-  font-family: var(--font-family-sans-serif);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 a {
@@ -66,12 +52,6 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
-
-.headline-2{
-  font-weight: var(--font-weight-bold);
-  font-size: var(--font-size-headline-2);
-  color: var(--main-color-blue)
 }
 
 @media (prefers-color-scheme: light) {
