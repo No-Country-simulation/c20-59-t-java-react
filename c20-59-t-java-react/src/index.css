@@ -3,10 +3,12 @@
 :root {
   /* colors */
   --main-color-blue: #1A4568;
+  --main-color-light-blue: #5F84A2;
   --main-color-purple: #432C81;
   --main-color-light-purple: #A095C1;
   --main-color-gray: #2F2F30;
   --main-color-light-gray: #EDECF4;
+  --main-color-yellow: #FEC62F;
 
   /* font */
   --font-family-sans-serif: "Raleway";
@@ -21,6 +23,11 @@
 
   /* spacing */
   --letter-spacing: -0.5px;
+}
+
+.headline-2{
+  font-size: var(--font-size-headline-2);
+  color: var(--main-color-blue)
 }
 
 html, body{
