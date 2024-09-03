@@ -1,14 +1,13 @@
 /* Estilo para el contenedor completo */
 .full-screen-container {
-  width: 100vw; /* Ocupa todo el ancho de la vista */
-  height: 100vh; /* Ocupa toda la altura de la vista */
-  display: flex;
-  justify-content: center; /* Centra horizontalmente */
-  align-items: center; /* Centra verticalmente */
-  overflow: hidden; /* Evita el desbordamiento */
+  width: 100vw; 
+  height: 100vh; 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  overflow: hidden;
 }
 
-/* Asegúrate de que tu archivo CSS esté importado en tu proyecto */
 .vh-100 {
   height: 100vh;
 }
@@ -48,6 +47,8 @@
 /* Estilo adicional para el formulario */
 .form-control {
   width: 100%; /* Asegura que los controles del formulario ocupen el ancho completo de la columna */
+  margin-top: 0.2rem;
+  margin-right: 0.1rem;
 }
 
 /* Estilo adicional para el botón */
@@ -57,15 +58,22 @@
 
 h2 {
   color: #5F84A2;
+  text-align: center; /* Centra el título */
 }
 
 /* Estilos para los botones de cancelación, confirmación y añadir */
 .btn-cancel, .btn-confirm, .btn-add {
   background-color: #5f84a2;
   border-color: #5f84a2;
+  margin: 0.5rem; /* Añade margen entre los botones */
 }
 
 .btn-cancel:hover, .btn-confirm:hover, .btn-add:hover {
   background-color: white;
   color: #5f84a2;
+}
+
+/* Estilo para los campos del formulario */
+.form-group {
+  margin-bottom: 1rem; /* Añade espacio entre los campos del formulario */
 }
