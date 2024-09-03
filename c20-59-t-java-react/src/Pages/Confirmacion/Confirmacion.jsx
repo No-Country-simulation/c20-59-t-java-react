@@ -13,6 +13,7 @@ const Confirmacion = () => {
 
   return (
     <div className='full-screen-container d-flex flex-column'>
+<<<<<<< HEAD
       <Container fluid className="d-flex justify-content-center align-items-center vh-100">
         <div className="text-center p-4 confirmacion-container">
           <FaRegHeart size={50} className="confirmacion-icon" />
@@ -20,6 +21,7 @@ const Confirmacion = () => {
           <div className='containerCitaAegendada'>
             <CitaAsignada specialty={specialty} doctor={doctor} date={date} time={time} />
           </div>
+=======
       
       <Container fluid className=" d-flex justify-content-center align-items-center vh-100">
         <div className="d-flex flex-column text-center align-items-center p-4">
@@ -33,6 +35,7 @@ const Confirmacion = () => {
               <span><b>Doctor:</b> Dr. Trauma Tologo</span>
             </Row>
           </Row>
+>>>>>>> 0626a440ac2d14b18f0bb75a33af193dc2ad63a0
           <Row className="confirmacion-row">
             <Button variant="light" className="confirmacion-button">
               <FaBell /> Confirmación Correo Electrónico
