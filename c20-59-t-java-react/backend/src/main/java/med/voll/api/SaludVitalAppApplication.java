@@ -1,4 +1,4 @@
-package com.no_country.salud_vital;
+package med.voll.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

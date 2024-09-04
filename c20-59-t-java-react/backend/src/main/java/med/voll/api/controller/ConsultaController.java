@@ -5,12 +5,10 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 import jakarta.validation.Valid;
 
-import med.voll.api.domain.consulta.AgendaDeConsultaService;
-import med.voll.api.domain.consulta.DatosAgendarConsulta;
-import med.voll.api.domain.consulta.DatosCancelamientoConsulta;
-import med.voll.api.domain.consulta.DatosDetalleConsulta;
+import med.voll.api.domain.consulta.*;
 
 import med.voll.api.infra.errores.ValidacionDeIntegridad;
+import med.voll.api.service.ConsultaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -23,10 +21,11 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 @ResponseBody
 @RequestMapping("/consultas")
-@SecurityRequirement(name = "bearer-key")
 @SuppressWarnings("all")
 public class ConsultaController {
 
+    @Autowired
+    private ConsultaService consultaService;
     @Autowired
     private AgendaDeConsultaService service;
     @GetMapping
@@ -58,4 +57,9 @@ public class ConsultaController {
         return ResponseEntity.noContent().build();
     }
 
+    @GetMapping(path = "/{idPaciente}")
+    public Page<DatosDetalleConsulta> getConsultasPorId(@PathVariable Long idPaciente,
+                                                        @PageableDefault(size = 10, sort = {"fecha"})Pageable paginacion){
+        return consultaService.getConsultasPorPacienteId(idPaciente, paginacion);
+    }
 }
