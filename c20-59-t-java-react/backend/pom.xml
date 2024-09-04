@@ -10,8 +10,8 @@
 	</parent>
 	<groupId>com.no-country</groupId>
 	<artifactId>salud_vital</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>salud_vital app</name>
+	<version>0.0.1</version>
+	<name>salud_vital</name>
 	<description>Aplicacion de gestor de turnos</description>
 	<url/>
 	<licenses>
@@ -66,14 +66,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.flywaydb</groupId>
-			<artifactId>flyway-core</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.flywaydb</groupId>
-			<artifactId>flyway-mysql</artifactId>
-		</dependency>
 
 		<dependency>
 			<groupId>com.mysql</groupId>
@@ -118,6 +110,12 @@
 			<artifactId>modelmapper</artifactId>
 			<version>3.0.0</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
 	</dependencies>
 
 	<build>
