@@ -1,9 +1,9 @@
 package med.voll.api.controller;
 
-import med.voll.api.domain.consulta.AgendaDeConsultaService;
-import med.voll.api.domain.consulta.DatosAgendarConsulta;
-import med.voll.api.domain.consulta.DatosDetalleConsulta;
-import med.voll.api.domain.medico.Especialidad;
+import com.no_country.salud_vital.domain.consulta.AgendaDeConsultaService;
+import com.no_country.salud_vital.domain.consulta.DatosAgendarConsulta;
+import com.no_country.salud_vital.domain.consulta.DatosDetalleConsulta;
+import com.no_country.salud_vital.domain.medico.Especialidad;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

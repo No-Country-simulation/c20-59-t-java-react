@@ -1,9 +1,13 @@
 package med.voll.api.domain.medico;
 
-import med.voll.api.domain.consulta.Consulta;
-import med.voll.api.domain.direccion.DatosDireccion;
-import med.voll.api.domain.paciente.DatosRegistroPaciente;
-import med.voll.api.domain.paciente.Paciente;
+import com.no_country.salud_vital.domain.consulta.Consulta;
+import com.no_country.salud_vital.domain.direccion.DatosDireccion;
+import com.no_country.salud_vital.domain.medico.DatosRegistroMedico;
+import com.no_country.salud_vital.domain.medico.Especialidad;
+import com.no_country.salud_vital.domain.medico.Medico;
+import com.no_country.salud_vital.domain.medico.MedicoRepository;
+import com.no_country.salud_vital.domain.paciente.DatosRegistroPaciente;
+import com.no_country.salud_vital.domain.paciente.Paciente;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +19,9 @@ import org.springframework.test.context.ActiveProfiles;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.temporal.TemporalAdjuster;
 import java.time.temporal.TemporalAdjusters;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
@@ -40,7 +42,7 @@ class MedicoRepositoryTest {
                 .with(TemporalAdjusters.next(DayOfWeek.MONDAY))
                 .atTime(10,0);
 
-        var medico=registrarMedico("Jose","j@mail.com","123456",Especialidad.CARDIOLOGIA);
+        var medico=registrarMedico("Jose","j@mail.com","123456", Especialidad.CARDIOLOGIA);
         var paciente= registrarPaciente("antonio","a@mail.com","654321");
         registrarConsulta(medico,paciente,proximoLunes10H);
 
