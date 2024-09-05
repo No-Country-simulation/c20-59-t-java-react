@@ -17,7 +17,7 @@ const Agendar = () => {
         <p className='noDatesText1 mb-0'>No Tienes Ninguna Cita</p>
         <p className='noDatesText2'>Haga click en el botón para agregar cita</p>
         <img src={HomeBtnLines} alt="" className='HomeBtnLines'/>
-        <NavLink to='/cita'>
+        <NavLink to='/consulta/1'>
           <img src={addDate} alt="" className='HomeBtnPosition'/>
         </NavLink>
       </div>
