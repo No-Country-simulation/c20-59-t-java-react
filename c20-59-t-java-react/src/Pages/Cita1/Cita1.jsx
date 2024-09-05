@@ -2,15 +2,13 @@ import { useState, useEffect } from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { NavLink, useParams } from 'react-router-dom';
-import { confirmAlert } from 'react-confirm-alert';
-import 'react-confirm-alert/src/react-confirm-alert.css';
+import { NavLink } from 'react-router-dom';
 import BottomNavbar from '../shared/BottomNavbar/BottomNavbar';
 import useCreateAppointment from '../../hooks/useCreateAppointment';
+import Swal from 'sweetalert2';
 
-
-const Cita = () => {
-  const {appointmentState, medicos, especialidades, errors, handleChange, handleSubmit} = useCreateAppointment();
+const CitaSimple = () => {
+  const { appointmentState, medicos, especialidades, errors, handleChange, handleSubmit } = useCreateAppointment();
   const [selectedDate, setSelectedDate] = useState(null);
   const [availableTimes, setAvailableTimes] = useState([]);
   const [selectedTime, setSelectedTime] = useState('');
@@ -22,33 +20,26 @@ const Cita = () => {
     }
   }, [selectedDate]);
 
-  const handleConfirm = () => {
-    confirmAlert({
-      title: 'Confirmar Especialidad',
-      message: '¿Está seguro de tomar esta especialidad? Si no está seguro, comuníquese con el 01 8000 6362.',
-      buttons: [
-        {
-          label: 'Sí',
-          onClick: () => {
-            const cita = {
-              idPaciente: 1,
-              especialidad: appointmentState.especialidad,
-              idMedico: appointmentState.idMedico,
-              fecha: new Date(`${selectedDate.toLocaleDateString()} ${selectedTime}`).toISOString(),
-              // fecha: selectedDate,
-              // hora: selectedTime
-            };
-            handleSubmit(cita);
-            console.log("Datos de la cita:", cita);
-            window.location.href = '/confirmacion';
-          }
-        },
-        {
-          label: 'No',
-          onClick: () => {}
-        }
-      ]
-    });
+  const handleSubmitClick = () => {
+    if (!selectedDate || !selectedTime) {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Por favor, selecciona una fecha y hora válidas.",
+        timer: 3000,
+      });
+      return;
+    }
+
+    const cita = {
+      idPaciente: 1,
+      idMedico: parseInt(appointmentState.idMedico),
+      fecha: new Date(`${selectedDate.toLocaleDateString()} ${selectedTime}`).toISOString(),
+      especialidad: appointmentState.especialidad,
+    };
+
+    handleSubmit(cita);
+    console.log("Datos de la cita:", cita);
   };
 
   return (
@@ -56,27 +47,19 @@ const Cita = () => {
       <Container fluid className="d-flex justify-content-center align-items-center">
         <Row className="w-100 justify-content-center">
           <Col xs={12} md={8} lg={6} className="p-4">
-            <h2 className="text-center $blue-800">Detalles de Cita</h2>
+            <h2 className="text-center">Detalles de Cita</h2>
             <Form className='mb-5' onSubmit={(e) => e.preventDefault()}>
               <Form.Group controlId="formSpecialty">
                 <Form.Label>Especialidad</Form.Label>
-                <Form.Control as="select"  name="especialidad" value={appointmentState.especialidad} onChange={handleChange}>
+                <Form.Control as="select" name="especialidad" value={appointmentState.especialidad} onChange={handleChange}>
                   <option>Seleccionar Especialidad</option>
                   {especialidades.map((especialidad, index) => (
                     <option key={index} value={especialidad}>{especialidad}</option>
                   ))}
-                  {/* <option>Neurología</option>
-                  <option>Médico Internista</option>
-                  <option>Ginecología</option>
-                  <option>Urología</option>
-                  <option>Oftalmología</option>
-                  <option>Pediatría</option>
-                  <option>Nutricionista</option>
-                  <option>Ortopedia</option>
-                  <option>Nutrición</option>
-                  <option>Medicina Alternativa</option> */}
                 </Form.Control>
+                {errors.especialidad && <div className="text-danger">{errors.especialidad}</div>}
               </Form.Group>
+
               <Form.Group controlId="formDoctor">
                 <Form.Label>Doctor</Form.Label>
                 <Form.Control as="select" name="idMedico" value={appointmentState.idMedico} onChange={handleChange}>
@@ -84,20 +67,21 @@ const Cita = () => {
                   {medicos.map((medico) => (
                     <option key={medico.id} value={medico.id}>{medico.nombre}</option>
                   ))}
-                  {/* <option>Dr Ramirez</option>
-                  <option>Dr Betancur</option>
-                  <option>Dr Ortiz</option> */}
                 </Form.Control>
+                {errors.idMedico && <div className="text-danger">{errors.idMedico}</div>}
               </Form.Group>
-              <Form.Group controlId="formDate" className=' col-sm-3'>
+
+              <Form.Group controlId="formDate" className='col-sm-3'>
                 <Form.Label>Fecha</Form.Label>
                 <DatePicker
                   selected={selectedDate}
                   onChange={(date) => setSelectedDate(date)}
                   dateFormat="dd/MM/yyyy"
-                  className="form-control "
+                  className="form-control"
                 />
+                {errors.fecha && <div className="text-danger">{errors.fecha}</div>}
               </Form.Group>
+
               <Form.Group controlId="formTime">
                 <Form.Label>Hora</Form.Label>
                 <Form.Control as="select" value={selectedTime} onChange={(e) => setSelectedTime(e.target.value)}>
@@ -107,11 +91,12 @@ const Cita = () => {
                   ))}
                 </Form.Control>
               </Form.Group>
+
               <div className="d-flex justify-content-between mt-4">
                 <Button variant="primary" className="btn-cancel">
-                  <NavLink className='text-white' to='/home'>Cancelación</NavLink> 
+                  <NavLink className='text-white' to='/home'>Cancelación</NavLink>
                 </Button>
-                <Button variant="primary" className="btn-confirm" onClick={handleConfirm}>
+                <Button variant="primary" className="btn-confirm" onClick={handleSubmitClick}>
                   Confirmar Cita
                 </Button>
               </div>
@@ -119,10 +104,9 @@ const Cita = () => {
           </Col>
         </Row>
       </Container>
-      <BottomNavbar/>
+      <BottomNavbar />
     </div>
   );
 };
 
-export default Cita;
-
+export default CitaSimple;

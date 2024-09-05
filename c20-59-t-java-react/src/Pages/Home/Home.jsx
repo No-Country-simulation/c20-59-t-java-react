@@ -3,7 +3,7 @@ import Agendar from '../../componentes/Agendar/Agendar';
 import AgendarCon from '../../componentes/AgendarCon/AgendarCon';
 
 
-const Home = () => {
+const Home1 = () => {
   return (
     <section className="Home-container">
       <Agendar />
@@ -12,4 +12,4 @@ const Home = () => {
   );
 }
 
-export default Home;
+export default Home1;
