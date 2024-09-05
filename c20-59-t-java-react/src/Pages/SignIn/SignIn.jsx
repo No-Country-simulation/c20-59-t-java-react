@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import Logo from '../../assets/img/Corazón.png';
 import { BsEyeFill } from "react-icons/bs";
 import './SignInStyles.css';
