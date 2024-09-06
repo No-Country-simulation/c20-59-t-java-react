@@ -1,4 +1,8 @@
 /* Estilos personalizados para el botón */
+.vh-auto{
+  height: 94vh;
+}
+
 .btn-custom {
   background-color: white;
   color: black;
