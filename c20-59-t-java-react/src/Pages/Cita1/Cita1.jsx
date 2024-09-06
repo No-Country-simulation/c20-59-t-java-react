@@ -6,12 +6,17 @@ import { NavLink } from 'react-router-dom';
 import BottomNavbar from '../shared/BottomNavbar/BottomNavbar';
 import useCreateAppointment from '../../hooks/useCreateAppointment';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
+import useFilterAppointments from '../../hooks/useFilterAppointments'; 
+import '../Cita/CitaStyles.css'
 
-const CitaSimple = () => {
+const CitaSimple = ({ appointments }) => {
   const { appointmentState, medicos, especialidades, errors, handleChange, handleSubmit } = useCreateAppointment();
   const [selectedDate, setSelectedDate] = useState(null);
   const [availableTimes, setAvailableTimes] = useState([]);
   const [selectedTime, setSelectedTime] = useState('');
+  const navigate = useNavigate();
+  const { filterResult, handleFilter, responseFilter } = useFilterAppointments(); // Corrección en el uso del hook
 
   useEffect(() => {
     if (selectedDate) {
@@ -20,7 +25,7 @@ const CitaSimple = () => {
     }
   }, [selectedDate]);
 
-  const handleSubmitClick = () => {
+  const handleSubmitClick = async () => {
     if (!selectedDate || !selectedTime) {
       Swal.fire({
         icon: "error",
@@ -31,19 +36,55 @@ const CitaSimple = () => {
       return;
     }
 
-    const cita = {
-      idPaciente: 1,
-      idMedico: parseInt(appointmentState.idMedico),
-      fecha: new Date(`${selectedDate.toLocaleDateString()} ${selectedTime}`).toISOString(),
-      especialidad: appointmentState.especialidad,
-    };
+    // Filtrar citas existentes
+    handleFilter(selectedDate, selectedTime, appointments); 
 
-    handleSubmit(cita);
-    console.log("Datos de la cita:", cita);
+    if (filterResult.length > 0) {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Ya existe una cita en la fecha y hora seleccionadas.",
+        timer: 3000,
+      });
+      return;
+    }
+
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: "Si no estás seguro de tomar esta cita, llama al 01 8000 666444",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, confirmar',
+      cancelButtonText: 'Cancelar'
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          const citaDate = new Date(`${selectedDate.toLocaleDateString()} ${selectedTime}`);
+          
+          const cita = {
+            idPaciente: 1,
+            idMedico: parseInt(appointmentState.idMedico),
+            fecha: citaDate.toISOString(),
+            especialidad: appointmentState.especialidad,
+          };
+
+          await handleSubmit(cita); 
+
+          navigate('/confirmacion', { state: { cita } });
+        } catch (error) {
+          Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: `No se pudo crear la cita: ${error.message}`,
+            timer: 3000,
+          });
+        }
+      }
+    });
   };
 
   return (
-    <div className="full-screen-container d-flex flex-column">
+    <div className="full-screen-container d-flex flex-column mb-3">
       <Container fluid className="d-flex justify-content-center align-items-center">
         <Row className="w-100 justify-content-center">
           <Col xs={12} md={8} lg={6} className="p-4">
@@ -71,13 +112,14 @@ const CitaSimple = () => {
                 {errors.idMedico && <div className="text-danger">{errors.idMedico}</div>}
               </Form.Group>
 
-              <Form.Group controlId="formDate" className='col-sm-3'>
+              <Form.Group controlId="formDate" className=' col-sm-3'>
                 <Form.Label>Fecha</Form.Label>
                 <DatePicker
                   selected={selectedDate}
                   onChange={(date) => setSelectedDate(date)}
                   dateFormat="dd/MM/yyyy"
-                  className="form-control"
+                  className="form-control  col-sm-3 "
+                  placeholderText="Seleccionar fecha"
                 />
                 {errors.fecha && <div className="text-danger">{errors.fecha}</div>}
               </Form.Group>
@@ -90,6 +132,7 @@ const CitaSimple = () => {
                     <option key={index} value={time}>{time}</option>
                   ))}
                 </Form.Control>
+                {errors.hora && <div className="text-danger">{errors.hora}</div>}
               </Form.Group>
 
               <div className="d-flex justify-content-between mt-4">
