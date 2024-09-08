@@ -1,15 +1,12 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { NavLink } from 'react-router-dom';
-import logo from '../../assets/img/Corazón.png';
 import BottomNavbar from '../../Pages/shared/BottomNavbar/BottomNavbar';
 import Header from '../../Pages/shared/header/Header';
 import './AgendarConStyles.css';
-import homeImg from '../../assets/img/Illustration.png'
 import addDate from '../../assets/icons/AddDate.png'
-import HomeBtnLines from '../../assets/icons/HomeBtnLines.png'
-
 import useFetchAppointments from '../../hooks/useFetchAppointments';
-import Appointment from '../Date/Appointment';
+import Appointment from '../Appointment/Appointment';
+
 const AgendarCon = () => {
   const {appointments, loading, error} = useFetchAppointments();
 
@@ -32,7 +29,7 @@ const AgendarCon = () => {
             <Appointment
               key={appointment.id}
               title={appointment.especialidad}
-              doctor={`Dr. ${appointment.idMedico}`} // Ajusta esto si `idMedico` es el nombre del doctor
+              doctor={`Dr. ${appointment.doctorName}`} // Ajusta esto si `idMedico` es el nombre del doctor
               date={formatDate(appointment.fecha)}
               time={new Date(appointment.fecha).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
             />

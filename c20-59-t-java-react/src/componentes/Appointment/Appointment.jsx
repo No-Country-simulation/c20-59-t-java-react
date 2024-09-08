@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../Date/DateStyles.css'
+import '../Appointment/AppointmentStyles.css'
 
 const Appointment = ({title, doctor, date, time}) => {
   return (

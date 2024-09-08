@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { fetchAppointments } from '../api/fetchAppointment';
+import { getMedicos } from '../api/getMedicos';
 
 const useFetchAppointments = (idPaciente) => {
     const [appointments, setAppointments] = useState([]);
@@ -9,10 +10,21 @@ const useFetchAppointments = (idPaciente) => {
     useEffect(() => {
         const fetchData = async () => {
             try{
-                const data = await fetchAppointments(1);
-                setAppointments(data);
-                console.log(data)
+                const Appointmentsdata = await fetchAppointments(1);
+                const medicosData = await getMedicos();
+
+                const AppointmentsAndMedicos = Appointmentsdata.map(appointment => {
+                    const doctor = medicosData.find(medico => medico.id === appointment.idMedico);
+                    return {
+                        ...appointment,
+                        doctorName: doctor ? doctor.nombre : 'Desconocido',
+                        especialidad: doctor ? doctor.especialidad : 'Desconocida',
+                    };
+                })
+                setAppointments(AppointmentsAndMedicos);
+                console.log(AppointmentsAndMedicos)
             } catch(error){
+                console.log(error)
                 setError(error.message);
             } finally {
                 setLoading(false);

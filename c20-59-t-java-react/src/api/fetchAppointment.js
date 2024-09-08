@@ -1,7 +1,7 @@
 import axios from "axios"
 
-// const BACKEND_ENDPOINT = import.meta.env.VITE_BACKEND_URL;
-const BACKEND_ENDPOINT = '/api';
+const BACKEND_ENDPOINT = import.meta.env.VITE_BACKEND_URL;
+
 
 export const fetchAppointments = async (idPaciente) => {
     try{

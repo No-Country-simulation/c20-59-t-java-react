@@ -2,16 +2,33 @@ import { useState, useEffect } from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import BottomNavbar from '../shared/BottomNavbar/BottomNavbar';
 import useCreateAppointment from '../../hooks/useCreateAppointment';
 import Swal from 'sweetalert2';
+import { fetchAppointments } from '../../api/fetchAppointment';
 
 const CitaSimple = () => {
   const { appointmentState, medicos, especialidades, errors, handleChange, handleSubmit } = useCreateAppointment();
   const [selectedDate, setSelectedDate] = useState(null);
   const [availableTimes, setAvailableTimes] = useState([]);
   const [selectedTime, setSelectedTime] = useState('');
+  const [excludedDates, setExcludedDates] = useState([]);
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    const fetchAppointmentDates = async () => {
+      try {
+        const citas = await fetchAppointments(1); 
+        const dates = citas.map((cita) => new Date(cita.fecha));
+        setExcludedDates(dates);
+      } catch (error) {
+        console.error('Error al obtener las citas agendadas:', error);
+      }
+    };
+
+    fetchAppointmentDates();
+  }, []);
 
   useEffect(() => {
     if (selectedDate) {
@@ -31,19 +48,24 @@ const CitaSimple = () => {
       return;
     }
 
+    const selectedMedico = medicos.find(medico => medico.id === parseInt(appointmentState.idMedico));
+
     const cita = {
       idPaciente: 1,
       idMedico: parseInt(appointmentState.idMedico),
+      nombreMedico: selectedMedico.nombre,
       fecha: new Date(`${selectedDate.toLocaleDateString()} ${selectedTime}`).toISOString(),
       especialidad: appointmentState.especialidad,
     };
 
     handleSubmit(cita);
     console.log("Datos de la cita:", cita);
+
+    navigate('/confirmacion', {state: {cita}})
   };
 
   return (
-    <div className="full-screen-container d-flex flex-column">
+    <div className="full-screen-container  d-flex flex-column">
       <Container fluid className="d-flex justify-content-center align-items-center">
         <Row className="w-100 justify-content-center">
           <Col xs={12} md={8} lg={6} className="p-4">
@@ -78,6 +100,7 @@ const CitaSimple = () => {
                   onChange={(date) => setSelectedDate(date)}
                   dateFormat="dd/MM/yyyy"
                   className="form-control"
+                  excludeDates={excludedDates}
                 />
                 {errors.fecha && <div className="text-danger">{errors.fecha}</div>}
               </Form.Group>
