@@ -2,7 +2,7 @@ import React from 'react'
 
 import BottomNavbar from '../shared/BottomNavbar/BottomNavbar'
 import Header from '../shared/header/Header'
-import addDate from '../../assets/icons/addDate.png'
+import addDate from '../../assets/icons/AddDate.png'
 import MedicalHistoryImg from '../../assets/img/MedicalHistoryImg.png'
 import './MedicalHistoryStyles.css'
 import MedicalHistoryDate from '../../componentes/MedicalHistoryDate/MedicalHistoryDate'
@@ -15,7 +15,7 @@ const MedicalHistory = () => {
       <div className=" flex-grow-1 overflow-auto">
         <div className='d-flex medicalHistoryPanel rounded-3 m-3 mt-0 py-1 px-3'>
             <div className='d-flex flex-column justify-content-center '>
-                <p className='headline-2'>Historial Medico</p>
+                <p className='headline-2'>Historial De Consultas</p>
             </div>
             <div>
                 <img className='medicalHistoryImg' src={MedicalHistoryImg} alt="" />
@@ -28,7 +28,7 @@ const MedicalHistory = () => {
             <MedicalHistoryDate/>
             <MedicalHistoryDate/>
         </div>
-        <NavLink to='/cita'>
+        <NavLink to='/consulta/:pacienteId'>
           <img src={addDate} alt="Add Date Button" className='HomeBtnPosition fixed-bottom-right'/>
         </NavLink>
       </div>
