@@ -14,14 +14,16 @@ const CitaSimple = () => {
   const [availableTimes, setAvailableTimes] = useState([]);
   const [selectedTime, setSelectedTime] = useState('');
   const [excludedDates, setExcludedDates] = useState([]);
-  const navigate = useNavigate()
+  const [filteredMedicos, setFilteredMedicos] = useState([]);
+  const navigate = useNavigate();
+  
 
   useEffect(() => {
     const fetchAppointmentDates = async () => {
       try {
         const citas = await fetchAppointments(1); 
         const dates = citas.map((cita) => new Date(cita.fecha));
-        setExcludedDates(dates);
+        setExcludedDates([...dates, ...[0]]);
       } catch (error) {
         console.error('Error al obtener las citas agendadas:', error);
       }
@@ -36,6 +38,15 @@ const CitaSimple = () => {
       setAvailableTimes(times);
     }
   }, [selectedDate]);
+
+  useEffect(()=>{
+    if(appointmentState.especialidad){
+      const medicosFiltrados = medicos.filter(medico => medico.especialidad === appointmentState.especialidad);
+      setFilteredMedicos(medicosFiltrados);
+    }else{
+      setFilteredMedicos([]);
+    }
+  }, [appointmentState.especialidad, medicos])
 
   const handleSubmitClick = () => {
     if (!selectedDate || !selectedTime) {
@@ -53,7 +64,7 @@ const CitaSimple = () => {
     const cita = {
       idPaciente: 1,
       idMedico: parseInt(appointmentState.idMedico),
-      nombreMedico: selectedMedico.nombre,
+      nombreMedico: selectedMedico.nombre || 'General',
       fecha: new Date(`${selectedDate.toLocaleDateString()} ${selectedTime}`).toISOString(),
       especialidad: appointmentState.especialidad,
     };
@@ -86,7 +97,7 @@ const CitaSimple = () => {
                 <Form.Label>Doctor</Form.Label>
                 <Form.Control as="select" name="idMedico" value={appointmentState.idMedico} onChange={handleChange}>
                   <option>Seleccionar Doctor</option>
-                  {medicos.map((medico) => (
+                  {filteredMedicos.map((medico) => (
                     <option key={medico.id} value={medico.id}>{medico.nombre}</option>
                   ))}
                 </Form.Control>
