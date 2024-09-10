@@ -42,38 +42,38 @@ const SignIn = () => {
           <h1 className="brand-title">Salud Vital</h1>
         </div>
         <form className="form-container" onSubmit={handleSubmit}>
-  <div className="form-group">
-    <input
-      type="email"
-      id="email"
-      placeholder="Email"
-      className="input-field"
-      value={email}
-      onChange={(e) => setEmail(e.target.value)}
-    />
-    {errorMessage && email !== validEmail && (
-      <p className="error-message">Invalid email address</p>
-    )}
-  </div>
-  <div className="form-group">
-    <div className="password-container">
-      <input
-        type="password"
-        id="password"
-        placeholder="Password"
-        className="input-field"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <BsEyeFill className="eye-icon" />
-    </div>
-    {errorMessage && password !== validPassword && (
-      <p className="error-message">Invalid password</p>
-    )}
-    <a href="/forgot-password" className="forgot-password">Forgot Password?</a>
-  </div>
-  <button type="submit" className="sign-in-button">Login</button>
-</form>
+          <div className="form-group">
+           <input
+              type="email"
+              id="email"
+              placeholder="Email"
+              className="input-field"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            {errorMessage && email !== validEmail && (
+              <p className="error-message">Invalid email address</p>
+            )}
+          </div>
+          <div className="form-group">
+            <div className="password-container">
+              <input
+                type="password"
+                id="password"
+                placeholder="Password"
+                className="input-field"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <BsEyeFill className="eye-icon" />
+            </div>
+            {errorMessage && password !== validPassword && (
+              <p className="error-message">Invalid password</p>
+            )}
+            <a href="/forgot-password" className="forgot-password">Forgot Password?</a>
+          </div>
+         <button type="submit" className="sign-in-button">Login</button>
+        </form>
 
         <div className="sign-up-container">
           <span>Don't have an account? </span>
