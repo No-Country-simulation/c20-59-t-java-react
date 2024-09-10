@@ -50,7 +50,7 @@ const useCreateAppointment = () =>{
 
     const validate = () => {
         const newErrors = {};
-        if(!appointmentState.idMedico) newErrors.idMedico = "Es necesario seleccionar un médico";
+        // if(!appointmentState.idMedico) newErrors.idMedico = "Es necesario seleccionar un médico";
         if(!appointmentState.especialidad) newErrors.especialidad = "Es necesario seleccionar una especialidad";
         if(!appointmentState.fecha) newErrors.fecha = "Es necesario seleccionar una fecha";
         
