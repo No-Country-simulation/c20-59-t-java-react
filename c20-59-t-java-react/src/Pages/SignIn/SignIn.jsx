@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Logo from '../../assets/img/Corazón.png';
 import { BsEyeFill } from "react-icons/bs";
@@ -15,18 +15,18 @@ const SignIn = () => {
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
-  // Hook para redireccionar
+  
   const navigate = useNavigate();
 
-  // Función que maneja el submit del formulario
+ 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     // Verificación de los datos ingresados
     if (email === validEmail && password === validPassword) {
-      setErrorMessage(''); // Limpia el mensaje de error si es exitoso
+      setErrorMessage(''); 
       // Redirige a la vista HomeSinCita
-      navigate('/home-sin-cita');
+      navigate('/home1');
     } else {
       setErrorMessage('Invalid email or password.');
     }
@@ -42,33 +42,39 @@ const SignIn = () => {
           <h1 className="brand-title">Salud Vital</h1>
         </div>
         <form className="form-container" onSubmit={handleSubmit}>
-          <div className="form-group">
-            <input
-              type="email"
-              id="email"
-              placeholder="Email"
-              className="input-field"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-          <div className="form-group">
-            <div className="password-container">
-              <input
-                type="password"
-                id="password"
-                placeholder="Password"
-                className="input-field"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <BsEyeFill className="eye-icon" />
-            </div>
-            <a href="/forgot-password" className="forgot-password">Forgot Password?</a>
-          </div>
-          {errorMessage && <p className="error-message">{errorMessage}</p>}
-          <button type="submit" className="sign-in-button">Login</button>
-        </form>
+  <div className="form-group">
+    <input
+      type="email"
+      id="email"
+      placeholder="Email"
+      className="input-field"
+      value={email}
+      onChange={(e) => setEmail(e.target.value)}
+    />
+    {errorMessage && email !== validEmail && (
+      <p className="error-message">Invalid email address</p>
+    )}
+  </div>
+  <div className="form-group">
+    <div className="password-container">
+      <input
+        type="password"
+        id="password"
+        placeholder="Password"
+        className="input-field"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      <BsEyeFill className="eye-icon" />
+    </div>
+    {errorMessage && password !== validPassword && (
+      <p className="error-message">Invalid password</p>
+    )}
+    <a href="/forgot-password" className="forgot-password">Forgot Password?</a>
+  </div>
+  <button type="submit" className="sign-in-button">Login</button>
+</form>
+
         <div className="sign-up-container">
           <span>Don't have an account? </span>
           <a href="/sign-up" className="sign-up-link">Sign Up</a>
