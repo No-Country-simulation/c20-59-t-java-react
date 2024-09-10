@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BACKEND_ENDPOINT = import.meta.env.VITE_BACKEND_URL
+const BACKEND_ENDPOINT = import.meta.env.VITE_BACKEND_URL;
 
 export const getMedicos = async () => {
     try {
@@ -13,7 +13,7 @@ export const getMedicos = async () => {
        
             if (Array.isArray(content)) {
                 allMedicos = [...allMedicos, ...content];
-              } else {
+            } else {
                 console.error("Error: la respuesta no contiene un array de médicos.");
             }
             totalPages = pages; 

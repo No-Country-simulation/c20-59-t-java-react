@@ -1,6 +1,6 @@
-import React from 'react'
-import { Navbar, Nav } from 'react-bootstrap'
-import { House} from 'react-bootstrap-icons';
+
+import {  Nav } from 'react-bootstrap'
+/* import { House} from 'react-bootstrap-icons'; */
 import Home from "../../../../assets/icons/Vector-5.png"
 import Setting from "../../../../assets/icons/Setting.png"
 import Notifications from "../../../../assets/icons/Vector-campana.png"

@@ -1,8 +1,8 @@
 import Logo from '../../assets/img/Corazón.png'
-import './SignUpStayles.css'; 
+import './vistaPrincipalStayles.css'; 
 
 
-const SignUp = () => {
+const vistaPrincipal = () => {
   return (
     <div className="full-screen-container ">
       <div className="row justify-content-center">
@@ -20,7 +20,7 @@ const SignUp = () => {
   )
 }
 
-export default SignUp
+export default vistaPrincipal
 
 
 

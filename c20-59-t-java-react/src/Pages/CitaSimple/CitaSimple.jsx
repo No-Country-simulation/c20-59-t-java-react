@@ -6,23 +6,13 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import BottomNavbar from '../shared/BottomNavbar/BottomNavbar';
 import useCreateAppointment from '../../hooks/useCreateAppointment';
 import Swal from 'sweetalert2';
-<<<<<<< HEAD:c20-59-t-java-react/src/Pages/Cita1/Cita1.jsx
-import { useNavigate } from 'react-router-dom';
-import useFilterAppointments from '../../hooks/useFilterAppointments'; 
-import '../Cita/CitaStyles.css'
-=======
 import { fetchAppointments } from '../../api/fetchAppointment';
->>>>>>> main:c20-59-t-java-react/src/Pages/CitaSimple/CitaSimple.jsx
 
-const CitaSimple = ({ appointments }) => {
+const CitaSimple = () => {
   const { appointmentState, medicos, especialidades, errors, handleChange, handleSubmit } = useCreateAppointment();
   const [selectedDate, setSelectedDate] = useState(null);
   const [availableTimes, setAvailableTimes] = useState([]);
   const [selectedTime, setSelectedTime] = useState('');
-<<<<<<< HEAD:c20-59-t-java-react/src/Pages/Cita1/Cita1.jsx
-  const navigate = useNavigate();
-  const { filterResult, handleFilter, responseFilter } = useFilterAppointments(); // Corrección en el uso del hook
-=======
   const [excludedDates, setExcludedDates] = useState([]);
   const navigate = useNavigate()
 
@@ -39,7 +29,6 @@ const CitaSimple = ({ appointments }) => {
 
     fetchAppointmentDates();
   }, []);
->>>>>>> main:c20-59-t-java-react/src/Pages/CitaSimple/CitaSimple.jsx
 
   useEffect(() => {
     if (selectedDate) {
@@ -48,7 +37,7 @@ const CitaSimple = ({ appointments }) => {
     }
   }, [selectedDate]);
 
-  const handleSubmitClick = async () => {
+  const handleSubmitClick = () => {
     if (!selectedDate || !selectedTime) {
       Swal.fire({
         icon: "error",
@@ -59,57 +48,6 @@ const CitaSimple = ({ appointments }) => {
       return;
     }
 
-<<<<<<< HEAD:c20-59-t-java-react/src/Pages/Cita1/Cita1.jsx
-    // Filtrar citas existentes
-    handleFilter(selectedDate, selectedTime, appointments); 
-
-    if (filterResult.length > 0) {
-      Swal.fire({
-        icon: "error",
-        title: "Error",
-        text: "Ya existe una cita en la fecha y hora seleccionadas.",
-        timer: 3000,
-      });
-      return;
-    }
-
-    Swal.fire({
-      title: '¿Estás seguro?',
-      text: "Si no estás seguro de tomar esta cita, llama al 01 8000 666444",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Sí, confirmar',
-      cancelButtonText: 'Cancelar'
-    }).then(async (result) => {
-      if (result.isConfirmed) {
-        try {
-          const citaDate = new Date(`${selectedDate.toLocaleDateString()} ${selectedTime}`);
-          
-          const cita = {
-            idPaciente: 1,
-            idMedico: parseInt(appointmentState.idMedico),
-            fecha: citaDate.toISOString(),
-            especialidad: appointmentState.especialidad,
-          };
-
-          await handleSubmit(cita); 
-
-          navigate('/confirmacion', { state: { cita } });
-        } catch (error) {
-          Swal.fire({
-            icon: "error",
-            title: "Error",
-            text: `No se pudo crear la cita: ${error.message}`,
-            timer: 3000,
-          });
-        }
-      }
-    });
-  };
-
-  return (
-    <div className="full-screen-container d-flex flex-column mb-3">
-=======
     const selectedMedico = medicos.find(medico => medico.id === parseInt(appointmentState.idMedico));
 
     const cita = {
@@ -128,7 +66,6 @@ const CitaSimple = ({ appointments }) => {
 
   return (
     <div className="full-screen-container  d-flex flex-column">
->>>>>>> main:c20-59-t-java-react/src/Pages/CitaSimple/CitaSimple.jsx
       <Container fluid className="d-flex justify-content-center align-items-center">
         <Row className="w-100 justify-content-center">
           <Col xs={12} md={8} lg={6} className="p-4">
@@ -156,19 +93,14 @@ const CitaSimple = ({ appointments }) => {
                 {errors.idMedico && <div className="text-danger">{errors.idMedico}</div>}
               </Form.Group>
 
-              <Form.Group controlId="formDate" className=' col-sm-3'>
+              <Form.Group controlId="formDate" className='col-sm-3'>
                 <Form.Label>Fecha</Form.Label>
                 <DatePicker
                   selected={selectedDate}
                   onChange={(date) => setSelectedDate(date)}
                   dateFormat="dd/MM/yyyy"
-<<<<<<< HEAD:c20-59-t-java-react/src/Pages/Cita1/Cita1.jsx
-                  className="form-control  col-sm-3 "
-                  placeholderText="Seleccionar fecha"
-=======
                   className="form-control"
                   excludeDates={excludedDates}
->>>>>>> main:c20-59-t-java-react/src/Pages/CitaSimple/CitaSimple.jsx
                 />
                 {errors.fecha && <div className="text-danger">{errors.fecha}</div>}
               </Form.Group>
@@ -181,7 +113,6 @@ const CitaSimple = ({ appointments }) => {
                     <option key={index} value={time}>{time}</option>
                   ))}
                 </Form.Control>
-                {errors.hora && <div className="text-danger">{errors.hora}</div>}
               </Form.Group>
 
               <div className="d-flex justify-content-between mt-4">

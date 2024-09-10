@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState, useEffect } from 'react';
 import { getMedicos } from './path-to-your-api'; // Ajusta la ruta según corresponda
 
