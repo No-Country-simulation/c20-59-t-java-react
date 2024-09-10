@@ -1,5 +1,5 @@
 import { Button, Container, Row } from 'react-bootstrap';
-import { /* FaRegHeart */ FaBell, FaCalendarAlt, FaArchive, FaArrowUp, FaHeart } from 'react-icons/fa';
+import {  FaArchive, FaArrowUp, FaHeart } from 'react-icons/fa';
 import BottomNavbar from '../shared/BottomNavbar/BottomNavbar';
 import './ConfirmacionStyles.css';  
 import { useLocation } from 'react-router-dom';
