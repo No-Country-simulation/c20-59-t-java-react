@@ -15,7 +15,6 @@ const AppRoutes = () => {
     <>
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/vistapricipal' element={<vistaPrincipal />} />
         <Route path='/signup' element={<SignUp />} />
         <Route path='/signin' element={<SignIn />} />
         <Route path='/home' element={<Home />} />
