@@ -1,15 +1,14 @@
-
-import Agendar from '../../componentes/Agendar/Agendar';
 import AgendarCon from '../../componentes/AgendarCon/AgendarCon';
 
 
-const Home1 = () => {
+const Home = () => {
   return (
     <section className="Home-container">
-      <Agendar />
+      {/* <Agendar /> */}
+      <AgendarCon/>
       
     </section>
   );
 }
 
-export default Home1;
+export default Home;

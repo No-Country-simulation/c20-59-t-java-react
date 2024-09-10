@@ -1,14 +1,15 @@
+
+import Agendar from '../../componentes/Agendar/Agendar';
 import AgendarCon from '../../componentes/AgendarCon/AgendarCon';
 
 
-const Home = () => {
+const HomeSinCita = () => {
   return (
     <section className="Home-container">
-      {/* <Agendar /> */}
-      <AgendarCon/>
+      <Agendar />
       
     </section>
   );
 }
 
-export default Home;
+export default HomeSinCita;

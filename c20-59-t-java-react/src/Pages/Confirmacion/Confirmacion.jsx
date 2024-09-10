@@ -1,37 +1,63 @@
 import { Button, Container, Row } from 'react-bootstrap';
+<<<<<<< HEAD
 import { /* FaRegHeart */ FaBell, FaCalendarAlt, FaArchive, FaArrowUp, FaHeart } from 'react-icons/fa';
+=======
+import { FaRegHeart, FaBell, FaCalendarAlt, FaArchive, FaArrowUp, FaHeart } from 'react-icons/fa';
+import { useLocation } from 'react-router-dom';
+>>>>>>> main
 import BottomNavbar from '../shared/BottomNavbar/BottomNavbar';
 import './ConfirmacionStyles.css';  
 import { useLocation } from 'react-router-dom';
 
 const Confirmacion = () => {
   const location = useLocation();
+<<<<<<< HEAD
   const { cita } = location.state || {};
 
   return (
     <div className='full-screen-container d-flex flex-column'>
+=======
+  const {cita} = location.state || {};
+
+  return (
+    <div className='full-screen-container d-flex flex-column'>
+      
+      
+>>>>>>> main
       <Container fluid className=" d-flex justify-content-center align-items-center vh-100">
         <div className="d-flex flex-column text-center align-items-center p-4">
           <FaHeart size={50} className="confirmacion-icon" />
           <h1 className='successText'>Cita agendada con éxito</h1>
           <Row className='mb-2 mt-3 '>
             <b><u>Resumen de la cita</u> </b> 
+<<<<<<< HEAD
             <Row>
               <span><b>Especialidad:</b> {cita?.especialidad}</span>
               <span><b>Fecha:</b> {new Date(cita?.fecha).toLocaleDateString()}</span>
               <span><b>Hora:</b> {new Date(cita?.fecha).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
               <span><b>Doctor:</b> {cita?.idMedico}</span>
             </Row>
+=======
+              {cita ? (
+                <Row>
+                  <span><b>Especialidad:</b> {cita.especialidad}</span>
+                  <span><b>Fecha:</b> {new Date(cita.fecha).toLocaleDateString()}-{new Date(cita.fecha).toLocaleTimeString()}</span>
+                  <span><b>Doctor:</b> Dr. {cita.nombreMedico}</span>
+                </Row>
+              ) : (
+                <p>No se encontraron detalles de la cita.</p>
+              )}
+>>>>>>> main
           </Row>
           <Row className="confirmacion-row">
-            <Button variant="light" className="confirmacion-button">
+            {/* <Button variant="light" className="confirmacion-button">
               <FaBell /> Confirmación Correo Electrónico
             </Button>
             <Button variant="light" className="confirmacion-button">
               <FaCalendarAlt /> Registrar en calendario
-            </Button>
+            </Button> */}
             <Button variant="light" className="confirmacion-button" style={{ marginBottom: 0 }}>
-              <FaArchive /> Reprogramar Cita
+              <FaArchive /> Cancelar Cita
             </Button>
           </Row>
           <p>Gracias por preferirnos</p>

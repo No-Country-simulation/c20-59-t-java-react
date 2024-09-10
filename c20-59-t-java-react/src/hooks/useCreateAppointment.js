@@ -30,7 +30,7 @@ const useCreateAppointment = () =>{
                 const especialidadesData = await getEspecialidades();
                 console.log('Datos de especialidades:', especialidadesData);
 
-                setMedicos(medicosData.content);
+                setMedicos(medicosData);
                 setEspecialidades(especialidadesData.content)
                 
             }catch(error){

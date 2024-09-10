@@ -2,21 +2,44 @@ import { useState, useEffect } from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import BottomNavbar from '../shared/BottomNavbar/BottomNavbar';
 import useCreateAppointment from '../../hooks/useCreateAppointment';
 import Swal from 'sweetalert2';
+<<<<<<< HEAD:c20-59-t-java-react/src/Pages/Cita1/Cita1.jsx
 import { useNavigate } from 'react-router-dom';
 import useFilterAppointments from '../../hooks/useFilterAppointments'; 
 import '../Cita/CitaStyles.css'
+=======
+import { fetchAppointments } from '../../api/fetchAppointment';
+>>>>>>> main:c20-59-t-java-react/src/Pages/CitaSimple/CitaSimple.jsx
 
 const CitaSimple = ({ appointments }) => {
   const { appointmentState, medicos, especialidades, errors, handleChange, handleSubmit } = useCreateAppointment();
   const [selectedDate, setSelectedDate] = useState(null);
   const [availableTimes, setAvailableTimes] = useState([]);
   const [selectedTime, setSelectedTime] = useState('');
+<<<<<<< HEAD:c20-59-t-java-react/src/Pages/Cita1/Cita1.jsx
   const navigate = useNavigate();
   const { filterResult, handleFilter, responseFilter } = useFilterAppointments(); // Corrección en el uso del hook
+=======
+  const [excludedDates, setExcludedDates] = useState([]);
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    const fetchAppointmentDates = async () => {
+      try {
+        const citas = await fetchAppointments(1); 
+        const dates = citas.map((cita) => new Date(cita.fecha));
+        setExcludedDates(dates);
+      } catch (error) {
+        console.error('Error al obtener las citas agendadas:', error);
+      }
+    };
+
+    fetchAppointmentDates();
+  }, []);
+>>>>>>> main:c20-59-t-java-react/src/Pages/CitaSimple/CitaSimple.jsx
 
   useEffect(() => {
     if (selectedDate) {
@@ -36,6 +59,7 @@ const CitaSimple = ({ appointments }) => {
       return;
     }
 
+<<<<<<< HEAD:c20-59-t-java-react/src/Pages/Cita1/Cita1.jsx
     // Filtrar citas existentes
     handleFilter(selectedDate, selectedTime, appointments); 
 
@@ -85,6 +109,26 @@ const CitaSimple = ({ appointments }) => {
 
   return (
     <div className="full-screen-container d-flex flex-column mb-3">
+=======
+    const selectedMedico = medicos.find(medico => medico.id === parseInt(appointmentState.idMedico));
+
+    const cita = {
+      idPaciente: 1,
+      idMedico: parseInt(appointmentState.idMedico),
+      nombreMedico: selectedMedico.nombre,
+      fecha: new Date(`${selectedDate.toLocaleDateString()} ${selectedTime}`).toISOString(),
+      especialidad: appointmentState.especialidad,
+    };
+
+    handleSubmit(cita);
+    console.log("Datos de la cita:", cita);
+
+    navigate('/confirmacion', {state: {cita}})
+  };
+
+  return (
+    <div className="full-screen-container  d-flex flex-column">
+>>>>>>> main:c20-59-t-java-react/src/Pages/CitaSimple/CitaSimple.jsx
       <Container fluid className="d-flex justify-content-center align-items-center">
         <Row className="w-100 justify-content-center">
           <Col xs={12} md={8} lg={6} className="p-4">
@@ -118,8 +162,13 @@ const CitaSimple = ({ appointments }) => {
                   selected={selectedDate}
                   onChange={(date) => setSelectedDate(date)}
                   dateFormat="dd/MM/yyyy"
+<<<<<<< HEAD:c20-59-t-java-react/src/Pages/Cita1/Cita1.jsx
                   className="form-control  col-sm-3 "
                   placeholderText="Seleccionar fecha"
+=======
+                  className="form-control"
+                  excludeDates={excludedDates}
+>>>>>>> main:c20-59-t-java-react/src/Pages/CitaSimple/CitaSimple.jsx
                 />
                 {errors.fecha && <div className="text-danger">{errors.fecha}</div>}
               </Form.Group>
