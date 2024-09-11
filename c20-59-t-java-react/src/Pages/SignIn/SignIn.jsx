@@ -26,7 +26,7 @@ const SignIn = () => {
     if (email === validEmail && password === validPassword) {
       setErrorMessage(''); 
       // Redirige a la vista HomeSinCita
-      navigate('/home1');
+      navigate('/home');
     } else {
       setErrorMessage('Invalid email or password.');
     }

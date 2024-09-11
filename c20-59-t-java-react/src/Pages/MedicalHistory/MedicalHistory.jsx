@@ -1,5 +1,3 @@
-import React from 'react'
-
 import BottomNavbar from '../shared/BottomNavbar/BottomNavbar'
 import Header from '../shared/header/Header'
 import addDate from '../../assets/icons/AddDate.png'
