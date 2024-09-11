@@ -1,8 +1,9 @@
 import './MedicalHistoryDateStyles.css'
 
-const MedicalHistoryDate = () => {
+const MedicalHistoryDate = ({date}) => {
   return (
     <div className='medicalHistory px-3 py-4 mb-2'>
+      {/* {date} */}
       <div className='appointment'>
         <p className='historyDate mb-2'>31/08/24, 08:50 am</p>
         <p className='historyResume p-0 m-0'>
