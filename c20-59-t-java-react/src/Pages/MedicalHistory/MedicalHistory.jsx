@@ -29,7 +29,7 @@ const MedicalHistory = () => {
             <MedicalHistoryDate/>
         </div>
         <NavLink to='/consulta/:pacienteId'>
-          <img src={addDate} alt="Add Date Button" className='HomeBtnPosition fixed-bottom-right'/>
+          <img src={addDate} alt="Add Date Button" className='fixed-bottom-right'/>
         </NavLink>
       </div>
       <BottomNavbar className='position-fixed bottom-0 w-100'/>
