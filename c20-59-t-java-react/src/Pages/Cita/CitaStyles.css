@@ -53,7 +53,7 @@
 
 /* Estilo adicional para el botón */
 .btn-primary {
-  width: auto; /* Ajusta el ancho del botón automáticamente */
+  width: 80%; /* Ajusta el ancho del botón automáticamente */
 }
 
 h2 {

@@ -1,33 +1,27 @@
 import { Button, Container, Row } from 'react-bootstrap';
-import { FaRegHeart, FaBell, FaCalendarAlt, FaArchive, FaArrowUp, FaHeart } from 'react-icons/fa';
-import { useLocation } from 'react-router-dom';
+import {  FaArchive, FaArrowUp, FaHeart } from 'react-icons/fa';
 import BottomNavbar from '../shared/BottomNavbar/BottomNavbar';
-/* import CitaAsignada from '../../componentes/CitaAsignada/CitaAsignada'; */
 import './ConfirmacionStyles.css';  
+import { useLocation } from 'react-router-dom';
 
 const Confirmacion = () => {
   const location = useLocation();
-  const {cita} = location.state || {};
+  const { cita } = location.state || {};
 
   return (
     <div className='full-screen-container d-flex flex-column'>
-      
-      
       <Container fluid className=" d-flex justify-content-center align-items-center vh-100">
         <div className="d-flex flex-column text-center align-items-center p-4">
           <FaHeart size={50} className="confirmacion-icon" />
           <h1 className='successText'>Cita agendada con éxito</h1>
           <Row className='mb-2 mt-3 '>
             <b><u>Resumen de la cita</u> </b> 
-              {cita ? (
-                <Row>
-                  <span><b>Especialidad:</b> {cita.especialidad}</span>
-                  <span><b>Fecha:</b> {new Date(cita.fecha).toLocaleDateString()}-{new Date(cita.fecha).toLocaleTimeString()}</span>
-                  <span><b>Doctor:</b> Dr. {cita.nombreMedico}</span>
-                </Row>
-              ) : (
-                <p>No se encontraron detalles de la cita.</p>
-              )}
+            <Row>
+              <span><b>Especialidad:</b> {cita?.especialidad}</span>
+              <span><b>Fecha:</b> {new Date(cita?.fecha).toLocaleDateString()}</span>
+              <span><b>Hora:</b> {new Date(cita?.fecha).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+              <span><b>Doctor:</b> {cita?.idMedico}</span>
+            </Row>
           </Row>
           <Row className="confirmacion-row">
             {/* <Button variant="light" className="confirmacion-button">

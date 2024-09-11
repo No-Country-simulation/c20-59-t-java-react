@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { fetchAppointments } from '../api/fetchAppointment';
 import { getMedicos } from '../api/getMedicos';
 
+// eslint-disable-next-line no-unused-vars
 const useFetchAppointments = (idPaciente) => {
     const [appointments, setAppointments] = useState([]);
     const [loading, setLoading] = useState(true);

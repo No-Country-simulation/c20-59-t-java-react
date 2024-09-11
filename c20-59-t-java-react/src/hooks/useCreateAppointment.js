@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react"
 import Swal from "sweetalert2";
 import { createAppointment } from "../api/createAppointment";

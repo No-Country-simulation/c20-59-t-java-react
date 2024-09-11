@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import AppRoutes from './routes/AppRoutes'
 import './index.css'
-import BottomNavbar from './Pages/Home/shared/BottomNavbar/BottomNavbar'
+/* import BottomNavbar from './Pages/Home/shared/BottomNavbar/BottomNavbar'; */
 
 
 createRoot(document.getElementById('root')).render(

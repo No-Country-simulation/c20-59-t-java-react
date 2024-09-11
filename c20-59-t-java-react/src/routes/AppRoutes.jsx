@@ -1,6 +1,6 @@
 // routes/AppRoutes.js
 import { Routes, Route } from 'react-router-dom';
-import Cita from '../Pages/Cita/Cita'; 
+/* import Cita from '../Pages/Cita/Cita';  */
 import Confirmacion from '../Pages/Confirmacion/Confirmacion';
 import MedicalHistory from '../Pages/MedicalHistory/MedicalHistory';
 import SignUp from '../Pages/SignUp/SignUp';

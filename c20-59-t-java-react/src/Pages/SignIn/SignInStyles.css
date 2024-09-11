@@ -73,13 +73,15 @@
 }
 
 /* Mensaje de error */
-/* .error-message {
+.error-message {
   color: red;
   font-size: 12px;
   text-align: left; 
   margin-top: 5px; 
-  margin-left: -2em; 
-} */
+  margin-left: 0;
+  padding-left: 2px; 
+}
+
 
 .forgot-password {
   display: block;
