@@ -8,6 +8,7 @@ import SignIn from '../Pages/SignIn/SignIn';
 import HomeSinCita from '../Pages/Home/HomeSinCita';
 import Home from '../Pages/Home/Home';
 import CitaSimple from '../Pages/CitaSimple/CitaSimple';
+import Profile from '../Pages/Profile/Profile';
 
 
 const AppRoutes = () => {
@@ -22,6 +23,7 @@ const AppRoutes = () => {
         <Route path='/consulta/:idPaciente' element={<CitaSimple />} /> 
         <Route path='/history' element={<MedicalHistory />} /> 
         <Route path='/confirmacion' element={<Confirmacion />} /> 
+        <Route path='/perfil' element={<Profile />} /> 
       </Routes>
       {/* <BottomNavbar/> */}
     </>

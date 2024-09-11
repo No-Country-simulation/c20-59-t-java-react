@@ -84,9 +84,9 @@ const Header = () => {
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <Nav className="text-center mt-5 gap-2">
-                  <Nav.Link href="#action1" className="fs-4">Mi perfil</Nav.Link>
-                  <Nav.Link href="#action2" className="fs-4">Configuracion</Nav.Link>
-                  <Nav.Link href="#action2" className="fs-4">Cerrar sesión</Nav.Link>
+                  <Nav.Link href="/perfil" className="fs-4">Mi perfil</Nav.Link>
+                  <Nav.Link href="/configuracion" className="fs-4">Configuracion</Nav.Link>
+                  <Nav.Link href="/logout" className="fs-4">Cerrar sesión</Nav.Link>
                 </Nav>
               </Offcanvas.Body>
             </Navbar.Offcanvas>
@@ -94,7 +94,6 @@ const Header = () => {
         </Navbar>
       ))}
     </>
-    
   )
 }
 
