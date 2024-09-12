@@ -1,4 +1,4 @@
-import React from 'react'
+
 import BottomNavbar from '../shared/BottomNavbar/BottomNavbar'
 import Header from '../shared/header/Header'
 import profileImg from '../../assets/img/profileImg.png'

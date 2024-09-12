@@ -36,7 +36,9 @@
 }
 
 .logo-img {
-  width: 100px;
+  max-width: 124px;
+
+  height: auto;
   margin-bottom: 10px;
 }
 
@@ -132,9 +134,13 @@
     box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
   }
 
-  .logo-img {
-    width: 120px; 
+ 
+    .logo-img {
+      max-width: 200px;
+      width: 100%;
+      height: auto;
   }
+  
 
   .brand-title {
     font-size: 36px; 
