@@ -9,17 +9,17 @@ import HomeSinCita from '../Pages/Home/HomeSinCita';
 import Home from '../Pages/Home/Home';
 import CitaSimple from '../Pages/CitaSimple/CitaSimple';
 import Profile from '../Pages/Profile/Profile';
-import { AuthenticationGuard } from '../componentes/auth0/AuthenticationGuard'
+/* import { AuthenticationGuard } from '../componentes/auth0/AuthenticationGuard' */
 
 const AppRoutes = () => {
   return (
     <>
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/signup' element={<AuthenticationGuard  Component={SignUp} />} />
-        <Route path='/signin'  element={<AuthenticationGuard  Component={SignIn} />} />
-        <Route path='/home'  element={<AuthenticationGuard  Component={Home} />} />
-        <Route path='/home1'  element={<AuthenticationGuard  Component={HomeSinCita} />} />
+        <Route path='/signup' element={<SignUp/>} />
+        <Route path='/signin'  element= {<SignIn />} />
+        <Route path='/home'  element={<Home/>} />
+        <Route path='/home1'  element={<HomeSinCita />} />
         <Route path='/consulta/:idPaciente' element={<CitaSimple />} /> 
         <Route path='/history' element={<MedicalHistory />} /> 
         <Route path='/confirmacion' element={<Confirmacion />} /> 

@@ -1,7 +1,7 @@
-/* eslint-disable react/prop-types */
 import { withAuthenticationRequired } from "@auth0/auth0-react";
 
-const AuthenticationGuard = ({ component }) => {
+// eslint-disable-next-line react/prop-types
+export const AuthenticationGuard = ({ component }) => {
   const Component = withAuthenticationRequired(component, {
     onRedirecting: () => (
       <div className="flex flex-col items-center justify-center mx-96">
@@ -12,5 +12,3 @@ const AuthenticationGuard = ({ component }) => {
 
   return <Component />;
 };
-
-export default AuthenticationGuard;
