@@ -5,6 +5,7 @@ import '../header/HeaderStyles.css'
 import {NavLink, useLocation, useNavigate} from 'react-router-dom'
 import { FaArrowLeft } from 'react-icons/fa'
 import { Container, Nav, Navbar, NavDropdown, Offcanvas } from 'react-bootstrap'
+import LogoutButton from '../../../componentes/auth0/LogoutButton'
 
 const Header = () => {
   const location = useLocation();
@@ -86,7 +87,7 @@ const Header = () => {
                 <Nav className="text-center mt-5 gap-2">
                   <Nav.Link href="/perfil" className="fs-4">Mi perfil</Nav.Link>
                   <Nav.Link href="/configuracion" className="fs-4">Configuracion</Nav.Link>
-                  <Nav.Link href="/logout" className="fs-4">Cerrar sesión</Nav.Link>
+                  <LogoutButton/>
                 </Nav>
               </Offcanvas.Body>
             </Navbar.Offcanvas>

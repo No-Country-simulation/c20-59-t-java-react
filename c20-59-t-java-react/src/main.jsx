@@ -3,13 +3,18 @@ import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import AppRoutes from './routes/AppRoutes'
 import './index.css'
-/* import BottomNavbar from './Pages/Home/shared/BottomNavbar/BottomNavbar'; */
+import { Auth0ProviderWithNavigate } from './componentes/auth0/Auth0ProviderWithNavigate'
+import {Auth0Provider} from '@auth0/auth0-react'
+
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
-     <AppRoutes />
+      <Auth0ProviderWithNavigate>
+        <AppRoutes />
+
+      </Auth0ProviderWithNavigate>
       
     </BrowserRouter>
   </StrictMode>,
