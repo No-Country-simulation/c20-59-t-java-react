@@ -1,0 +1,23 @@
+.fixed-bottom-right {
+  position: absolute;
+  bottom: 45px; 
+  right: 210px;
+  z-index: 10; 
+  width: 50px;
+}
+
+.HomeBtnLines{
+  margin-left: 120px;
+  margin-top: -10px;
+  height: 140px;
+}
+.HomeBtnPosition{
+  margin-top: -90px;
+  margin-right: -189px;
+  width: 60px;
+}
+
+.no-overflow{
+  overflow-y: hidden;
+}
+
