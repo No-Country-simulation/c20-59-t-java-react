@@ -8,7 +8,8 @@ import SignIn from '../Pages/SignIn/SignIn';
 import HomeSinCita from '../Pages/Home/HomeSinCita';
 import Home from '../Pages/Home/Home';
 import CitaSimple from '../Pages/CitaSimple/CitaSimple';
-import {AuthenticationGuard} from '../componentes/auth0/AuthenticationGuard'
+import Profile from '../Pages/Profile/Profile';
+import { AuthenticationGuard } from '../componentes/auth0/AuthenticationGuard'
 
 const AppRoutes = () => {
   return (
@@ -19,9 +20,10 @@ const AppRoutes = () => {
         <Route path='/signin'  element={<AuthenticationGuard  Component={SignIn} />} />
         <Route path='/home'  element={<AuthenticationGuard  Component={Home} />} />
         <Route path='/home1'  element={<AuthenticationGuard  Component={HomeSinCita} />} />
-        <Route path='/consulta/:idPaciente'  element={<AuthenticationGuard  Component={CitaSimple} />} />
-        <Route path='/history'  element={<AuthenticationGuard  Component={MedicalHistory} />} />
-        <Route path='/confirmacion'  element={<AuthenticationGuard  Component={Profile} />} />
+        <Route path='/consulta/:idPaciente' element={<CitaSimple />} /> 
+        <Route path='/history' element={<MedicalHistory />} /> 
+        <Route path='/confirmacion' element={<Confirmacion />} /> 
+        <Route path='/perfil' element={<Profile />} /> 
       </Routes>
       {/* <BottomNavbar/> */}
     </>
