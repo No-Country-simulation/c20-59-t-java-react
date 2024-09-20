@@ -12,3 +12,8 @@
 .profilePicture{
     width: 53px;
 }
+
+.navbar-toggler{
+    border: none !important;
+    box-shadow: none !important;
+}

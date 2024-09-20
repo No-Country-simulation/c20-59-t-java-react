@@ -1,63 +1,55 @@
 /* Estilos personalizados para el botón */
+.vh-auto{
+  height: 94vh;
+}
+
 .btn-custom {
-  background-color: #5f84a2; /* Color de fondo del botón */
-  color: white; /* Color del texto */
-  border: 1px solid #5f84a2; /* Borde del mismo color que el fondo */
+  background-color: white;
+  color: black;
+  border: 1px solid #ccc; 
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 100%; 
 }
 
 .btn-custom:hover {
-  background-color: white; /* Color de fondo al hacer hover */
-  color: #5f84a2; /* Color del texto al hacer hover */
-  border: 1px solid #5f84a2; /* Borde del mismo color que el fondo */
+  background-color: #f8f9fa;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Estilo para el contenedor completo */
-.full-screen-container {
-  width: 100vw; /* Ocupa todo el ancho de la vista */
-  height: 100vh; /* Ocupa toda la altura de la vista */
-  justify-content: center; /* Centra horizontalmente */
-  align-items: center; /* Centra verticalmente */
-  overflow: hidden; /* Evita el desbordamiento */
-  
-}
-
-/* Estilo para centrar el contenido dentro del contenedor */
-.agendar-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* Centra verticalmente */
-  align-items: center; /* Centra horizontalmente */
-  width: 100vw; /* Ajusta el ancho automáticamente */
-  height: 100vh; /* Ajusta la altura automáticamente */
-  padding: 0px; /* Espacio interno para el contenido */
-  
+/* Estilo para la tarjeta */
+.card {
+  width: 100%; 
+  height: 100%;
+  max-width: 500px;
+  margin: auto; 
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center;
+  align-items: center;
 }
 
 /* Estilo para la imagen del logo */
 .logo-img {
-  max-width: 200px;
+  max-width: 200px; 
   width: 100%;
-  height: auto;
+  height: auto; 
 }
 
 span.salud-vital {
   display: block;
   color: #1a4568;
   text-align: center;
-  margin-top: 10px;
-  font-size: 2rem;
+  margin-top: 10px; 
+  font-size: 2rem; 
 }
 
 h2.horario-atencion {
-  font-size: 1.25rem;
+  font-size: 1.25rem; 
 }
 
 /* Ajuste para vh-100 en móviles */
 @media (max-height: 600px) {
-  .full-screen-container {
+  .vh-100 {
     height: auto;
     min-height: 100vh;
   }
@@ -65,21 +57,21 @@ h2.horario-atencion {
 
 /* Media queries para responsividad */
 @media (max-width: 576px) {
-  .agendar-container {
+  .card {
     padding: 2rem;
   }
 
   .logo-img {
-    max-width: 150px;
+    max-width: 150px; 
   }
 }
 
 @media (min-width: 1280px) {
-  .agendar-container {
+  .card {
     padding: 4rem;
   }
 
   .logo-img {
-    max-width: 200px;
+    max-width: 200px; 
   }
 }

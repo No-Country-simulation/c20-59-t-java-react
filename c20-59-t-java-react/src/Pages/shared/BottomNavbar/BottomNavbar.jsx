@@ -1,33 +1,24 @@
 import React from 'react'
 import { Nav } from 'react-bootstrap'
-
-import Home from "../../../assets/icons/Vector-5.png"
-import Setting from "../../../assets/icons/Setting.png"
-import Notifications from "../../../assets/icons/Vector-campana.png"
-import MedicHistory from "../../../assets/icons/Vector-4.png"
-import '../BottomNavbar/styles.css'
+import '../BottomNavbar/BottomNavbarStyles.css'
+import { FaChartBar, FaClipboardCheck, FaCommentDots, FaHouseUser } from 'react-icons/fa'
 
 const BottomNavbar = () => {
   return (
-    <div className='d-flex justify-content-around w-100 sombra-navbar'>
-        <Nav>
-            <Nav.Link href='home'>
-                <img src={Home} alt="Home button" />
+        <Nav className='d-flex justify-content-evenly sombra-navbar vw-100'>
+            <Nav.Link href='/home'>
+               <FaHouseUser size={30} className="home-icon"/>
             </Nav.Link>
-            <Nav.Link href='history'>
-                <img src={MedicHistory} alt="Medical history button" />
+            <Nav.Link href='/history'>
+                <FaChartBar size={30} className="home-icon"/>
             </Nav.Link>
-            <Nav.Link href='notifications'>
-                <img src={Notifications} alt="Home button" />
+            <Nav.Link href='/notifications'>
+                <FaClipboardCheck size={30} className="home-icon"/>
             </Nav.Link>
-            <Nav.Link href='settings'>
-                <img src={Setting} alt="Settings button" />
+            <Nav.Link href='/settings'>
+                <FaCommentDots size={30} className="home-icon"/>
             </Nav.Link>
-        </Nav>
-
-    </div>
-  
-    
+        </Nav>  
   )
 }
 

@@ -1,26 +1,26 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { NavLink } from 'react-router-dom';
-import logo from '../../assets/img/Corazón.png';
-import BottomNavbar from '../../Pages/shared/BottomNavbar/BottomNavbar';
+import BottomNavbar from '../../Pages/Home/shared/BottomNavbar/BottomNavbar';
 import './styles.css';
+import Heart from "../../assets/img/Corazón.png"
 
 const Agendar = () => {
   return (
-    
-    <div className="full-screen-container d-flex flex-column">
-      <div className="agendar-container text-center">
+    <div className="d-flex justify-content-center align-items-center vh-auto">
+      <div className="card text-center shadow-sm p-4 d-flex flex-column justify-content-center align-items-center  ">
         {/* Solo imagen del logo */}
-        <img className="img-fluid mb-3 logo-img" src={logo} alt="Logo de Salud Vital" />
-        <span className="salud-vital">Salud Vital</span>
+        <img className="img-fluid mb-3 logo-img " src={Heart} />
+        <span className='text bs-primary-bg-subtle $azul-900 salud-vital'>Salud Vital</span>
         <h2 className="mb-3 horario-atencion">Horario de Atención</h2>
         <p>Lunes a Viernes: 7:00 am - 7:00 pm</p>
         <p>Sábados: 7:00 am - 1:00 pm</p>
         {/* Botón de agendar cita */}
-        <NavLink to='/cita' className="btn btn-custom mt-4 mb-5">Agendar Cita</NavLink>
+        <button className="btn btn-custom mt-4">Agendar Cita</button>
         {/* Espacio para el navbar */}
-      </div>
+        {/* <div className="mt-auto">
           <BottomNavbar/>
-        
+        </div> */}
+      </div>
+      
     </div>
   );
 };
