@@ -18,3 +18,11 @@
     color: var(--main-color-light-blue);
 }
 
+
+.historyResume{
+    width: 320px;
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    color: var(--main-color-light-blue);
+}
