@@ -9,11 +9,11 @@ const BottomNavbar = () => {
             <Nav.Link href='/home'>
                <FaHouseUser size={30} className="home-icon"/>
             </Nav.Link>
-            <Nav.Link href='/history'>
-                <FaChartBar size={30} className="home-icon"/>
+            <Nav.Link href='/history/:idPaciente'>
+                <FaClipboardCheck size={30} className="home-icon"/>
             </Nav.Link>
             <Nav.Link href='/notifications'>
-                <FaClipboardCheck size={30} className="home-icon"/>
+                <FaChartBar size={30} className="home-icon"/>
             </Nav.Link>
             <Nav.Link href='/settings'>
                 <FaCommentDots size={30} className="home-icon"/>

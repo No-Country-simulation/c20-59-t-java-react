@@ -5,11 +5,14 @@ import '../header/HeaderStyles.css'
 import {NavLink, useLocation, useNavigate} from 'react-router-dom'
 import { FaArrowLeft } from 'react-icons/fa'
 import { Container, Nav, Navbar, NavDropdown, Offcanvas } from 'react-bootstrap'
+import LogoutButton from '../../../componentes/auth0/LogoutButton'
+import useGetPacientesById from '../../../hooks/useGetPacientesById'
 
 const Header = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const {paciente} = useGetPacientesById();
 
   const isHomePage = location.pathname === '/home' || location.pathname === '/'
 
@@ -21,46 +24,20 @@ const Header = () => {
     setIsMenuOpen(false);
   }
 
+  const firstName = paciente?.nombre.split(' ')[0] || 'General';
+
   return (
-    // <div className='d-flex justify-content-between align-items-center w-100 p-3'>
-    //   {isHomePage ? (
-    //    <div className='d-flex justify-content-center align-items-center'>
-    //      <img src={Hand} alt="Mano saludando en header" className='me-2 mb-2 headerHand'/>
-    //      <p className='header mb-0 '>Hola Julia!</p>
-    //    </div>
-    //   ) : (
-    //     <NavLink to='/home'>
-    //       <FaArrowLeft size={30} color='#432C81'/>
-    //     </NavLink>
-    //   )}
-    //    <div className='profile-container' tabIndex={0} onBlur={closeMenu}>
-    //     <img 
-    //       src={ProfileImg} 
-    //       alt="Profile picture" 
-    //       className='profilePicture'
-    //       onClick={toggleMenu}
-    //     />
-
-    //     {/* {isMenuOpen && ( */}
-    //       <div className='dropdown-menu'>
-    //         <NavLink to="/profile" className="dropdown-item">Mi perfil</NavLink>
-    //         <NavLink to="/settings" className="dropdown-item">Configuración</NavLink>
-    //         <NavLink to="/logout" className="dropdown-item">Cerrar sesión</NavLink>
-
-    //       </div>
-    //     {/* )} */}
-
-    //    </div>
-    // </div>
-    <>
+       <>
       {[false].map((expand) => (
-        <Navbar key={expand} expand={expand}>
+        <Navbar key={expand} expand={expand} className="pb-0">
           <Container fluid>
             {isHomePage ? (
-            <div className='d-flex justify-content-center align-items-center'>
-              <img src={Hand} alt="Mano saludando en header" className='me-2 mb-2 headerHand'/>
-              <p className='header mb-0 '>Hola Julia!</p>
-            </div>
+              paciente && (
+                <div className='d-flex justify-content-center align-items-center mb-0 pb-0'>
+                  <img src={Hand} alt="Mano saludando en header" className='me-2 mb-2 headerHand'/>
+                  <p className='header mb-0 '>Hola {firstName}!</p>
+                </div>
+              )
             ) : (
               <NavLink to='/home'>
                 <FaArrowLeft size={30} color='#432C81'/>
@@ -84,9 +61,9 @@ const Header = () => {
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <Nav className="text-center mt-5 gap-2">
-                  <Nav.Link href="/perfil" className="fs-4">Mi perfil</Nav.Link>
+                  <Nav.Link href="/profile/:idPaciente" className="fs-4">Mi perfil</Nav.Link>
                   <Nav.Link href="/configuracion" className="fs-4">Configuracion</Nav.Link>
-                  <Nav.Link href="/logout" className="fs-4">Cerrar sesión</Nav.Link>
+                  <LogoutButton className="logoutButton" />
                 </Nav>
               </Offcanvas.Body>
             </Navbar.Offcanvas>

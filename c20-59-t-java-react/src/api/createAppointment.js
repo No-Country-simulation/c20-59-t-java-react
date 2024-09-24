@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const BACKEND_ENDPOINT = import.meta.env.VITE_BACKEND_URL
+const BACKEND_ENDPOINT = import.meta.env.VITE_BACKEND_URL 
 
 export const createAppointment = async (cita) => {
     try{

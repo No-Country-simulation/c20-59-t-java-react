@@ -2,11 +2,10 @@ import axios from "axios";
 
 const BACKEND_ENDPOINT = import.meta.env.VITE_BACKEND_URL;
 
-export const fetchAppointments = async (idPaciente) => {
+export const getPacientesById = async (idPaciente) => {
     try {
-        const response = await axios.get(`${BACKEND_ENDPOINT}/consultas/${idPaciente}`);
-        console.log('Respuesta appointments:', response.data.content)
-        return response.data.content;
+        const response = await axios.get(`${BACKEND_ENDPOINT}/pacientes/${idPaciente}`);
+        return response.data;
     } catch (error) {
         if (error.response) {
             console.error('Error en la respuesta del servidor:', error.response.data);

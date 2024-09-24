@@ -1,9 +1,12 @@
+// import { useAuth0 } from '@auth0/auth0-react';
 import { useState, useEffect } from 'react';
+import { deleteAppointment } from '../api/deleteAppointment';
 import { fetchAppointments } from '../api/fetchAppointment';
 import { getMedicos } from '../api/getMedicos';
 
 // eslint-disable-next-line no-unused-vars
-const useFetchAppointments = (idPaciente) => {
+const useFetchAppointments = (idPaciente, refreshTrigger) => {
+    // const {getAccessTokenSilently} = useAuth0();
     const [appointments, setAppointments] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -11,7 +14,13 @@ const useFetchAppointments = (idPaciente) => {
     useEffect(() => {
         const fetchData = async () => {
             try{
-                const Appointmentsdata = await fetchAppointments(1);
+                // const token = await getAccessTokenSilently({
+                //     authorizationParams: {
+                //         audience: import.meta.env.VITE_AUTH0_AUDIENCE,
+                //     },
+                // });
+                // console.log('token obtenido:', token)
+                const Appointmentsdata = await fetchAppointments(idPaciente);
                 const medicosData = await getMedicos();
 
                 const AppointmentsAndMedicos = Appointmentsdata.map(appointment => {
@@ -23,7 +32,7 @@ const useFetchAppointments = (idPaciente) => {
                     };
                 })
                 setAppointments(AppointmentsAndMedicos);
-                console.log(AppointmentsAndMedicos)
+                console.log('consultas agendadas', AppointmentsAndMedicos)
             } catch(error){
                 console.log(error)
                 setError(error.message);
@@ -33,9 +42,22 @@ const useFetchAppointments = (idPaciente) => {
         };
 
        fetchData();
-    }, []);
+    }, [idPaciente, refreshTrigger]);
 
-    return { appointments, loading, error}
+    const handleDeleteAppointment = async (id) => {
+        setLoading(true);
+        try {
+            await deleteAppointment(id, 'PACIENTE_DESISTIO');
+            setAppointments(appointments.filter(appointment => appointment.id !== id));
+        } catch (error) {
+            setError('Error al eliminar la cita');
+            console.error('Error detallado:', error.response ? error.response.data : error.message);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    return { appointments, loading, error, handleDeleteAppointment}
 
 };
 

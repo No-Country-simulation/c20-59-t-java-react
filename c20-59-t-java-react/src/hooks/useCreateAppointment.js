@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { createAppointment } from "../api/createAppointment";
 import { getEspecialidades } from "../api/getEspecialidades";
@@ -13,6 +14,7 @@ const useCreateAppointment = () =>{
         idMedico:'',
         fecha: new Date().toISOString(),
         especialidad: '',
+        // hora:'',
     });
 
     const [medicos, setMedicos] = useState([]);
@@ -20,15 +22,16 @@ const useCreateAppointment = () =>{
     const [errors, setErrors] = useState({});
     const [loading, setLoading] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false)
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchData = async () => {
             try{
                 const medicosData = await getMedicos();
-                console.log('Datos de Medicos:', medicosData)
+                // console.log('Datos de Medicos:', medicosData)
 
                 const especialidadesData = await getEspecialidades();
-                console.log('Datos de especialidades:', especialidadesData);
+                // console.log('Datos de especialidades:', especialidadesData);
 
                 setMedicos(medicosData);
                 setEspecialidades(especialidadesData.content)
@@ -42,15 +45,23 @@ const useCreateAppointment = () =>{
 
     const handleChange = (e) => {
         const {name, value} = e.target;
-        setAppointmentState((prevState) => ({
-            ...prevState,
-            [name]: value,
-        }));
+        if(name === 'especialidad'){
+            setAppointmentState((prevState)=>({
+                ...prevState,
+                [name]: value,
+                idMedico: '',
+            }));
+        } else {
+            setAppointmentState((prevState) => ({
+                ...prevState,
+                [name]: value,
+            }));
+        }
     };
 
     const validate = () => {
         const newErrors = {};
-        // if(!appointmentState.idMedico) newErrors.idMedico = "Es necesario seleccionar un médico";
+        if(!appointmentState.idMedico) newErrors.idMedico = "Es necesario seleccionar un médico";
         if(!appointmentState.especialidad) newErrors.especialidad = "Es necesario seleccionar una especialidad";
         if(!appointmentState.fecha) newErrors.fecha = "Es necesario seleccionar una fecha";
         
@@ -58,7 +69,6 @@ const useCreateAppointment = () =>{
     };
 
     const handleSubmit = async (cita) => {
-        // e.preventDefault();
         const formErrors = validate();
         if(Object.keys(formErrors).length > 0){
             setErrors(formErrors)
@@ -74,7 +84,7 @@ const useCreateAppointment = () =>{
                     text: "La consulta médica ha sido registrada",
                     timer: 3000,
                 }).then(()=>{
-                    window.location.href = '/confirmacion';
+                    navigate('/confirmacion', {state: {cita}})
                 })
             }catch(error){
                 Swal.fire({
